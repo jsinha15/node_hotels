@@ -39,8 +39,13 @@ const express = require("express");
 const app = express();
 const db = require("./db");
 
+require["dotenv"].config();
+
 const bodyparser = require("body-parser");
 app.use(bodyparser.json()); // req.body
+
+
+const PORT = process.env.PORT || 3000;
 
 //methods to share data
 // GET , POST ,  PATCH  , DELETE
@@ -103,7 +108,7 @@ app.use("/person", personRoutes);
 const menuRoutes = require("./routes/MenuItemRoutes");
 app.use("/menu", menuRoutes);
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("server is listening on port 3000");
 });
 
